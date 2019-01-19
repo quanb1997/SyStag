@@ -1,0 +1,10 @@
+#footer{
+    background: linear-gradient(#1c2a48  ,#131720 35%);
+    float: bottom;
+}
+
+#top-footer-row{
+	padding-top:50px;
+	font-weight:200;
+	font-style: italic;
+}

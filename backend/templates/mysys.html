@@ -1,0 +1,55 @@
+<form method="get" action="../">
+    <button type="submit">To hello page</button>
+</form>
+<form>
+    <div>
+        <input type="search" id="mySearch" name="q"
+        placeholder="Search the systems" size="30">
+        <select name="type">
+            {% for field in model_fields %}
+                <option value={{ field.name }}>{{ field.name }}</option>
+            {% endfor %}
+        </select>
+        <button>Search</button>
+    </div>
+
+    <!-- attempting create tag button... -->
+    <div>
+        <input type="create_tag" id="new_tag" name="p"
+        placeholder="New tag name" size="30">
+        <button>Create Tag</button>
+    </div>
+    <!-- could be totally wrong... -->
+    <div>
+        <select name="Systems">
+            {% for s in system_list.0 %}
+                <option value={{ s.systemname }}>{{ s.systemname }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+</form>
+{% if search %}
+    <pre> {{ searchtype }} </pre>
+    <pre> {{ search }} </pre>
+    {% if system_list %}
+        <style> table, th, td {border: 1px solid black;} </style>
+        <table style="width:100%">
+            <tr>
+            {% for attribute in system_list.0 %}
+                <th>{{ attribute }}</th>
+            {% endfor %}
+            </tr>
+            {% for system in system_list %}
+                <tr>
+                {% for key, value in system.items %}
+                    <td> {{ value }} </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <text> No systems were found. </text>
+    {% endif %}
+{% endif %}
+
